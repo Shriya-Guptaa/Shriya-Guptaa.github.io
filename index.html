@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shriya's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --text: #010500;
+            --background: #fff5e5;
+            --primary: #8e2f39;
+            --secondary: #626d4a;
+            --accent: #f2c0cf;
+        }
+
+        [data-theme="dark"] {
+            --text: #fbfffa;
+            --background: #1a1000;
+            --primary: #d0717b;
+            --secondary: #aab592;
+            --accent: #3f0d1c;
+        }
+
+        .text-text { color: var(--text); }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-accent { color: var(--accent); }
+        .bg-background { background-color: var(--background); }
+        .bg-primary { background-color: var(--primary); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-accent { background-color: var(--accent); }
+        .bg-text { background-color: var(--text); }
+        .border-primary { border-color: var(--primary); }
+        .border-secondary { border-color: var(--secondary); }
+        .hover\:bg-text:hover { background-color: var(--text); }
+        .hover\:bg-text:hover { color: var(--background); }
+        .hover\:text-primary:hover { color: var(--primary); }
+        .hover\:text-text:hover { color: var(--text); }
+        .focus\:border-primary:focus { border-color: var(--primary); }
+
+        .section-padding { padding: 5rem 0; }
+        
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Gradient backgrounds */
+        .home-gradient {
+            background: linear-gradient(135deg, var(--background) 0%, rgba(242, 192, 207, 0.3) 100%);
+        }
+
+        .contact-gradient {
+            background: linear-gradient(135deg, rgba(242, 192, 207, 0.2) 0%, var(--background) 100%);
+        }
+
+        .projects-bg {
+            background: linear-gradient(135deg, rgba(98, 109, 74, 0.05) 0%, rgba(242, 192, 207, 0.05) 100%);
+        }
+
+        .achievements-bg {
+            background: linear-gradient(135deg, rgba(142, 47, 57, 0.05) 0%, rgba(98, 109, 74, 0.05) 100%);
+        }
+
+        /* Avatar and image backgrounds */
+        .avatar-bg {
+            background: linear-gradient(135deg, rgba(142, 47, 57, 0.1) 0%, rgba(242, 192, 207, 0.3) 100%);
+        }
+
+        .about-image-bg {
+            background: linear-gradient(135deg, rgba(98, 109, 74, 0.1) 0%, rgba(242, 192, 207, 0.2) 100%);
+        }
+
+        .about-avatar-bg {
+            background: linear-gradient(135deg, rgba(142, 47, 57, 0.15) 0%, rgba(98, 109, 74, 0.15) 100%);
+        }
+
+        /* Tag backgrounds */
+        .tag-primary {
+            background-color: rgba(142, 47, 57, 0.1);
+        }
+
+        .tag-secondary {
+            background-color: rgba(98, 109, 74, 0.1);
+        }
+
+        .tag-accent {
+            background-color: rgba(242, 192, 207, 0.3);
+        }
+
+        /* Skill tag backgrounds */
+        .skill-tag-primary {
+            background-color: rgba(142, 47, 57, 0.1);
+        }
+
+        .skill-tag-secondary {
+            background-color: rgba(98, 109, 74, 0.1);
+        }
+
+        .skill-tag-accent {
+            background-color: rgba(242, 192, 207, 0.3);
+        }
+
+        .skill-tag-accent-light {
+            background-color: rgba(242, 192, 207, 0.2);
+        }
+
+        /* Project backgrounds */
+        .project-bg-primary {
+            background: linear-gradient(135deg, rgba(142, 47, 57, 0.1) 0%, rgba(142, 47, 57, 0.05) 100%);
+        }
+
+        .project-bg-secondary {
+            background: linear-gradient(135deg, rgba(98, 109, 74, 0.1) 0%, rgba(98, 109, 74, 0.05) 100%);
+        }
+
+        .project-bg-accent {
+            background: linear-gradient(135deg, rgba(242, 192, 207, 0.3) 0%, rgba(242, 192, 207, 0.1) 100%);
+        }
+
+        /* Project tag backgrounds */
+        .project-tag-primary {
+            background-color: rgba(142, 47, 57, 0.1);
+        }
+
+        .project-tag-secondary {
+            background-color: rgba(98, 109, 74, 0.1);
+        }
+
+        .project-tag-accent {
+            background-color: rgba(242, 192, 207, 0.3);
+        }
+
+        /* Experience tag backgrounds */
+        .exp-tag-secondary {
+            background-color: rgba(98, 109, 74, 0.1);
+        }
+
+        .exp-tag-accent {
+            background-color: rgba(242, 192, 207, 0.3);
+        }
+
+        /* Education backgrounds */
+        .edu-bg-secondary {
+            background: linear-gradient(135deg, rgba(98, 109, 74, 0.1) 0%, rgba(98, 109, 74, 0.05) 100%);
+        }
+
+        .edu-bg-accent {
+            background: linear-gradient(135deg, rgba(242, 192, 207, 0.3) 0%, rgba(242, 192, 207, 0.1) 100%);
+        }
+
+        /* Resume background */
+        .resume-bg {
+            background: linear-gradient(135deg, rgba(142, 47, 57, 0.1) 0%, rgba(242, 192, 207, 0.2) 100%);
+        }
+
+        /* Form message background */
+        .form-message-bg {
+            background-color: rgba(242, 192, 207, 0.6);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-background/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-primary">Shriya Gupta</div>
+                <div class="flex items-center space-x-6">
+                    <button id="themeToggle" class="p-2 rounded-full bg-background hover:bg-accent transition-colors">
+                        <span id="themeIcon" class="text-xl">🌙</span>
+                    </button>
+                    <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-secondary hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-secondary hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link text-secondary hover:text-primary transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link text-secondary hover:text-primary transition-colors">Experience</a>
+                    <a href="#education" class="nav-link text-secondary hover:text-primary transition-colors">Education</a>
+                    <a href="#achievements" class="nav-link text-secondary hover:text-primary transition-colors">Achievements</a>
+                    <a href="#resume" class="nav-link text-secondary hover:text-primary transition-colors">Resume</a>
+                    <a href="#contact" class="nav-link text-secondary hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center home-gradient">
+        <div class="text-center max-w-4xl mx-auto px-6">
+            <div class="w-32 h-32 rounded-full mx-auto mb-8 flex items-center justify-center avatar-bg">
+                <span class="text-4xl">👋</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-light mb-6 text-text">Hello, I'm <span class="font-semibold text-primary">Shriya</span></h1>
+            <p class="text-xl md:text-2xl text-secondary mb-8 font-light">Python Developer & AI/ML Enthusiast</p>
+            <a href="#about" class="inline-block bg-primary text-white px-8 py-3 rounded-full hover:bg-text transition-colors">Get to know me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-2xl p-8 about-image-bg">
+                    <div class="w-full h-64 rounded-xl flex items-center justify-center about-avatar-bg">
+                        <span class="text-6xl">🧑‍💻</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-lg text-secondary mb-6 leading-relaxed">
+                        I'm a computer science student passionate about applying AI and machine learning to solve real-world problems. I've built projects ranging from an AI-powered contract compliance checker to health risk prediction apps and NLP-driven automation tools, using technologies like Python, scikit-learn, TensorFlow, LangChain, and Streamlit.
+                    </p>
+                    <p class="text-lg text-secondary mb-6 leading-relaxed">
+                        I thrive at the intersection of data, creativity, and problem-solving — architecting NLP workflows, integrating APIs, and developing dashboards that make complex insights easy to use. Beyond tech, I'm a dog lover, dancer, and avid reader, always seeking new perspectives and inspiration.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full text-sm text-primary tag-primary">AI/ML Enthusiast</span>
+                        <span class="px-4 py-2 rounded-full text-sm text-secondary tag-secondary">Creative Problem Solver</span>
+                        <span class="px-4 py-2 rounded-full text-sm text-primary tag-accent">Collaborative Leader</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Skills & Technologies</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="skill-card bg-background rounded-2xl p-8 text-center shadow-sm">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-4 text-text">Frontend</h3>
+                    <div class="space-y-2">
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent">HTML</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-secondary skill-tag-secondary">CSS/SCSS</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-primary">JavaScript</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent-light">React</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-background rounded-2xl p-8 text-center shadow-sm">
+                    <div class="text-4xl mb-4">🐍</div>
+                    <h3 class="text-xl font-semibold mb-4 text-text">Backend / AI & Data</h3>
+                    <div class="space-y-2">
+                        <span class="block px-3 py-1 rounded-full text-sm text-secondary skill-tag-secondary">Python</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent">MySQL</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-primary">MongoDB</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent-light">Java</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-background rounded-2xl p-8 text-center shadow-sm">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-semibold mb-4 text-text">AI/ML Frameworks</h3>
+                    <div class="space-y-2">
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-primary">scikit-learn</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-secondary skill-tag-secondary">TensorFlow</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent">LangChain</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent-light">Pandas</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-background rounded-2xl p-8 text-center shadow-sm">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-semibold mb-4 text-text">Tools & Platforms</h3>
+                    <div class="space-y-2">
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-primary">Git</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-secondary skill-tag-secondary">Linux</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent">Google Cloud</span>
+                        <span class="block px-3 py-1 rounded-full text-sm text-primary skill-tag-accent-light">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-background rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-full h-48 rounded-xl mb-6 flex items-center justify-center project-bg-accent">
+                        <span class="text-4xl">⚖️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-text">AI Compliance Checker</h3>
+                    <p class="text-secondary mb-4">Built automated NLP workflows for contract analysis using LangChain and Hugging Face. Integrated APIs for data retrieval, reduced manual compliance checks by ~60%.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">LangChain</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">Streamlit</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-accent">Hugging Face</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">Groq API</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">Google Sheets API</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/Vanithagiri/Regulatory-Compliance-Checker-Public" class="text-primary hover:text-text text-sm font-medium">GitHub</a>
+                    </div>
+                </div>
+                <div class="bg-background rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-full h-48 rounded-xl mb-6 flex items-center justify-center project-bg-secondary">
+                        <span class="text-4xl">🏥</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-text">Health Risk Predictor</h3>
+                    <p class="text-secondary mb-4">Achieved 85% prediction accuracy using Logistic Regression, KNN, and KMeans. Built interactive dashboard for real-time clinical/remote health risk prediction.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-accent">scikit-learn</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">Streamlit</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">KNN</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-accent">KMeans</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/Shriya-Guptaa/Smart-health-risk-predictor" class="text-primary hover:text-text text-sm font-medium">GitHub</a>
+                    </div>
+                </div>
+                <div class="bg-background rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-full h-48 rounded-xl mb-6 flex items-center justify-center project-bg-primary">
+                        <span class="text-4xl">📺</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-text">FuzzyTube</h3>
+                    <p class="text-secondary mb-4">YouTube transcript analyzer using fuzzy logic and NLP for automated timestamped stock mention highlights. Reduced manual video scanning time by ~70%.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">YouTube API</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-accent">Fuzzy Logic</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">NLP</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">Python</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/Shriya-Guptaa/FuzzyTube" class="text-primary hover:text-text text-sm font-medium">GitHub</a>
+                    </div>
+                </div>
+                <div class="bg-background rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="w-full h-48 rounded-xl mb-6 flex items-center justify-center project-bg-accent">
+                        <span class="text-4xl">💰</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-text">Budget Manager</h3>
+                    <p class="text-secondary mb-4">ML-powered budget management app using Random Forest for expense predictions and savings recommendations in an interactive web interface.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">Random Forest</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-secondary project-tag-secondary">Streamlit</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-accent">Pandas</span>
+                        <span class="px-3 py-1 rounded-full text-xs text-primary project-tag-primary">Matplotlib</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/Shriya-Guptaa/Budget-Manager" class="text-primary hover:text-text text-sm font-medium">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Experience</h2>
+            <div class="space-y-8">
+                <div class="bg-background rounded-2xl p-8 shadow-sm">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-text">AI Project Lead</h3>
+                            <p class="text-primary font-medium">Infosys Springboard</p>
+                        </div>
+                        <span class="px-4 py-2 rounded-full text-sm mt-2 md:mt-0 text-secondary exp-tag-secondary">Aug 2025 - Present</span>
+                    </div>
+                    <p class="text-secondary leading-relaxed">Leading a cross-functional team to build an AI-driven contract compliance checker using LangChain, Hugging Face Transformers, and Streamlit. Architected NLP workflows, automated data ingestion, and developed interactive dashboards.</p>
+                </div>
+                <div class="bg-background rounded-2xl p-8 shadow-sm">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-text">AI/ML Intern</h3>
+                            <p class="text-primary font-medium">QSPEAR Consultancy Services</p>
+                        </div>
+                        <span class="px-4 py-2 rounded-full text-sm mt-2 md:mt-0 text-primary exp-tag-accent">Jun 2025 - Jul 2025</span>
+                    </div>
+                    <p class="text-secondary leading-relaxed">Built a Smart Health Risk Predictor using Logistic Regression, KNN, and KMeans achieving 85% accuracy. Integrated machine learning results into an interactive Streamlit dashboard for real-time clinical use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Education</h2>
+            <div class="grid md:grid-cols-1 gap-8 max-w-3xl mx-auto">
+                <div class="rounded-2xl p-8 edu-bg-secondary">
+                    <div class="text-4xl mb-4">🎓</div>
+                    <h3 class="text-xl font-semibold mb-2 text-text">B.Tech in Information Technology</h3>
+                    <p class="text-primary font-medium mb-2">Dr. Akhilesh Das Gupta Institute of Professional Studies, Delhi</p>
+                    <span class="bg-background px-4 py-2 rounded-full text-sm text-secondary">2022 - 2026</span>
+                    <p class="text-secondary mt-4">Current CGPA: 8.37/10. Focusing on AI/ML, data structures, algorithms, and software engineering principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Certifications & Achievements</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-background rounded-2xl p-6 text-center shadow-sm">
+                    <div class="text-3xl mb-3">🤖</div>
+                    <h3 class="font-semibold text-text mb-2">AI & ML Training</h3>
+                    <p class="text-sm text-secondary">IBM (Aug 2024)</p>
+                </div>
+                <div class="bg-background rounded-2xl p-6 text-center shadow-sm">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-semibold text-text mb-2">Machine Learning Training</h3>
+                    <p class="text-sm text-secondary">Internshala (Jun 2024)</p>
+                </div>
+                <div class="bg-background rounded-2xl p-6 text-center shadow-sm">
+                    <div class="text-3xl mb-3">💼</div>
+                    <h3 class="font-semibold text-text mb-2">SE Job Simulation</h3>
+                    <p class="text-sm text-secondary">Accenture Nordics - Forage (May 2025)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section-padding bg-background">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-light mb-8 text-text">Resume</h2>
+            <p class="text-lg text-secondary mb-8">Download my complete resume to learn more about my AI/ML projects, technical skills, and experience.</p>
+            <div class="rounded-2xl p-8 inline-block resume-bg">
+                <div class="text-5xl mb-4">📄</div>
+                <h3 class="text-xl font-semibold mb-4 text-text">Shriya's Resume</h3>
+                <a href="#" onclick="downloadResume()" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-text transition-colors inline-block">
+                    Download PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-background">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16 text-text">Contact Me</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-text">Let's Connect</h3>
+                    <p class="text-secondary mb-8 leading-relaxed">I'm always excited to discuss AI/ML projects, collaborate on innovative solutions, or chat about the latest developments in artificial intelligence and data science.</p>
+                    
+                    <div class="space-y-4">
+                        <a href="mailto:shriyagupta2472@gmail.com" class="flex items-center space-x-4 text-secondary hover:text-primary transition-colors">
+                            <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center">
+                                <span class="text-xl">📧</span>
+                            </div>
+                            <span>shriyagupta2472@gmail.com</span>
+                        </a>
+                        <a href="https://github.com/Shriya-Guptaa" class="flex items-center space-x-4 text-secondary hover:text-primary transition-colors">
+                            <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center">
+                                <span class="text-xl">🐙</span>
+                            </div>
+                            <span>GitHub Profile</span>
+                        </a>
+                        <a href="https://linkedin.com/in/shriyagupta2472" class="flex items-center space-x-4 text-secondary hover:text-primary transition-colors">
+                            <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center">
+                                <span class="text-xl">💼</span>
+                            </div>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        <div class="flex items-center space-x-4 text-secondary">
+                            <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center">
+                                <span class="text-xl">📱</span>
+                            </div>
+                            <span>+91 9868152716</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-background rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-6 text-text">Send a Message</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors border-secondary focus:border-primary">
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors border-secondary focus:border-primary">
+                        </div>
+                        <div>
+                            <textarea id="message" rows="4" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors resize-none border-secondary focus:border-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-text transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="formMessage" class="mt-4 text-center text-sm text-secondary hidden">
+                        <div class="p-3 rounded-lg form-message-bg">
+                            <strong>Demo Form:</strong> This is a sample contact form. In a real portfolio, this would be connected to a backend service to send emails.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-background py-8 border-t border-secondary/20">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-secondary">&copy; 2025 Shriya Gupta. Made with ❤️ and lots of coffee.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scrollspy functionality
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Resume download function
+        function downloadResume() {
+            const resumeUrl = 'https://raw.githubusercontent.com/Shriya-Guptaa/Shriya-Guptaa.github.io/main/ShriyaGupta_resume.pdf';
+            const a = document.createElement('a');
+            a.href = resumeUrl;
+            a.download = 'ShriyaGupta_Resume.pdf';
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                document.getElementById('formMessage').classList.remove('hidden');
+                this.reset();
+            }
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme from localStorage
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+            } else {
+                html.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', updateActiveNavLink);
+        window.addEventListener('load', updateActiveNavLink);
+        window.addEventListener('load', initializeTheme);
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fa84eb0401a6e6',t:'MTc1Nzk2NDQyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+
